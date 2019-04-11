@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using System.IO;
 
 namespace Assignment4
-{
+   {
     class Program
     {
         ArrayList Beowulf;
@@ -14,6 +16,7 @@ namespace Assignment4
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.Run();
         }
 
         public void Run() { this.ReadTextFiles(); }
@@ -21,7 +24,7 @@ namespace Assignment4
         public void ReadTextFiles()
         {
             //Read file using streamReader.
-            using (StreamReader file = new StreamReader("c:/arear/.txt"))
+            using (StreamReader file = new StreamReader("U:/Users/730484/Beowulf.txt"))
             {
                 int counter = 0;
                 string ln;
@@ -30,6 +33,7 @@ namespace Assignment4
                 {
                     Console.WriteLine(ln);
                     Beowulf.Add(ln);
+                    counter++;
                 }
                 file.Close();
                 Console.WriteLine($"File has {counter} lines.");
