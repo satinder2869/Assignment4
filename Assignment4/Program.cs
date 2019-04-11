@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +17,15 @@ namespace Assignment4
             Program p = new Program();
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
+            p.find();
+            p.Word();
+            p.Letters();
             Console.ReadKey();
         }
         public void Run() { this.ReadTextFiles(); }
 
         public void ReadTextFiles()
         {
-            // Read file using StramReader. Read file line by line
 
             StreamReader reader = new StreamReader("U:/Users/730484/Beowulf.txt");
             string script = reader.ReadToEnd();
@@ -34,7 +35,6 @@ namespace Assignment4
 
             while (index < text.Length)
             {
-
                 while (index < text.Length && !char.IsWhiteSpace(text[index]))
                     index++;
 
@@ -47,7 +47,54 @@ namespace Assignment4
             Console.WriteLine("Total Words are " + Count);
 
         }
+        public void find()
 
+        {
+            int ABC = 0;
+            foreach (var line in File.ReadAllLines("U:/Users/730484/Beowulf.txt"))
+            {
+                if (line.Contains("sea") && line.Contains("fare"))
+                {
+                    ABC++;
+                }
+
+            }
+            Console.WriteLine("Total words of sea and fare :" + ABC);
+
+        }
+        public void Word()
+        {
+            int ABC = 0, DEF = 0, GHI = 0;
+
+            foreach (var line in File.ReadAllLines("U:/Users/730484/Beowulf.txt"))
+            {
+                if (line.Contains("fare"))
+                { ABC++; }
+            }
+            foreach (var line in File.ReadAllLines("U:/Users/730484/Beowulf.txt"))
+            {
+                if (line.Contains("war") && line.Contains("fare"))
+                {
+                    DEF++;
+                }
+
+            }
+            GHI = ABC - DEF;
+
+
+            Console.WriteLine("Total Lines which contain fare but not war: " + GHI);
+        }
+        public void Letters()
+        {
+
+            StreamReader reader = new StreamReader("U:/Users/730484/Beowulf.txt");
+            string script = reader.ReadToEnd();
+            int n = 0;
+            foreach (char letter in script)
+            { n++; }
+            Console.WriteLine("Number of letters: " + n);
+
+        }
         public int FindNumberOfBlankSpaces(string line)
         {
 
